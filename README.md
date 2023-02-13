@@ -12,7 +12,9 @@ can be used to move time forward.
 
 To install the latest version on npm locally and save it in your package's `package.json` file:
 
+```
 npm i --save clockwarp
+```
 
 # Example
 
