@@ -1,0 +1,25 @@
+{
+  "name": "clockwarp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/ClockWarp.js",
+  "type": "module",
+  "scripts": {
+    "test": "mocha src",
+    "watch": "mocha src --watch --parallel --recursive"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jamro/clockwarp.git"
+  },
+  "author": "Krzysztof Jamroz",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jamro/clockwarp/issues"
+  },
+  "homepage": "https://github.com/jamro/clockwarp#readme",
+  "devDependencies": {
+    "mocha": "^10.2.0",
+    "sinon": "^15.0.1"
+  }
+}
