@@ -1,10 +1,11 @@
 {
   "name": "clockwarp",
-  "version": "1.0.0",
-  "description": "",
+  "version": "1.0.1",
+  "description": "JavaScript alternative to setTimeout offering time manipulation features",
   "main": "src/ClockWarp.js",
   "type": "module",
   "scripts": {
+    "all": "npm run doc && npm run test",
     "test": "mocha src",
     "watch": "mocha src --watch --parallel --recursive",
     "doc": "jsdoc2md src/ClockWarp.js -t doc/README.hbs > README.md"

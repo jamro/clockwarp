@@ -1,3 +1,4 @@
+[![npm version](https://badge.fury.io/js/clockwarp.svg)](https://badge.fury.io/js/clockwarp)
 
 # ClockWrap
 
@@ -6,6 +7,12 @@ This library provides time manipulation capabilities that allow you to adjust th
 timing of events in your code. ClockWarp has a time multiplier which can be used 
 to make all events run faster or slower, and it also has a fastForward method that 
 can be used to move time forward. 
+
+# Installation
+
+To install the latest version on npm locally and save it in your package's `package.json` file:
+
+npm i --save clockwarp
 
 # Example
 
