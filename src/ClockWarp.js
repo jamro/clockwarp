@@ -69,6 +69,9 @@ class ClockWarp {
 
   // eslint-disable-next-line require-jsdoc
   set timeScale(scale) {
+    if (isNaN(scale) || scale <= 0) {
+      throw new Error('timeScale must be a positive Number');
+    }
     this._updateElapsed();
     this._timeScale = scale;
     this._scheduleNextEvent();
@@ -97,6 +100,9 @@ class ClockWarp {
    * @param {Number} dt - amount of miliseconds to fast forward
    */
   fastForward(dt) {
+    if (isNaN(dt) || dt <= 0) {
+      throw new Error('dt must be a positive Number');
+    }
     this._updateElapsed();
     this._elapsed += dt;
     while (this._execOverdueEvent()) {
@@ -114,6 +120,12 @@ class ClockWarp {
    * @return {Object} scheduled event object
    */
   setTimeout(callback, duration, repeat=false) {
+    if (typeof(callback) !== 'function') {
+      throw new Error('callback must be a Function');
+    }
+    if (isNaN(duration) || duration < 0 || duration === null) {
+      throw new Error('timeScale must be a non-negative Number');
+    }
     this._updateElapsed();
     const timestamp = this._elapsed + duration;
     const event = {timestamp, callback};

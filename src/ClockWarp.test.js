@@ -9,6 +9,63 @@ describe('ClockWarp', function() {
     this.clock = new ClockWarp();
   });
 
+  describe('input validation', function() {
+    
+    [null, 0, -1, "1x2", {}, undefined]
+    .forEach((val) => it('should throw when setting timeScale to ' + JSON.stringify(val), async function() {
+      assert.throws(() => {
+        this.clock.timeScale = val
+      }, 'should throw Error when timeScale=' + JSON.stringify(val))
+    }));
+
+    [null, 0, -1, "1x2", {}, undefined]
+    .forEach((val) => it('should throw when fastForward by' + JSON.stringify(val), async function() {
+      assert.throws(() => {
+        this.clock.fastForward(val)
+      }, 'should throw Error when fastForward(' + JSON.stringify(val) + ')')
+    }));
+
+    [null, 0, 421, "1x2", {}, undefined]
+    .forEach((val) => it('should throw when setting timeout with callback=' + JSON.stringify(val), async function() {
+      assert.throws(() => {
+        this.clock.setTimeout(val, 10)
+      }, 'should throw Error when setTimeout(' + JSON.stringify(val) + ', ...)')
+    }));
+
+    [null, 0, 421, "1x2", {}, undefined]
+    .forEach((val) => it('should throw when setting interval with callback=' + JSON.stringify(val), async function() {
+      assert.throws(() => {
+        this.clock.setInterval(val, 10)
+      }, 'should throw Error when setInterval(' + JSON.stringify(val) + ', ...)')
+    }));
+
+    it('should throw when setting timeout without parameters', async function() {
+      assert.throws(() => {
+        this.clock.setTimeout()
+      })
+    });
+
+    it('should throw when setting interval without parameters', async function() {
+      assert.throws(() => {
+        this.clock.setInterval()
+      })
+    });
+
+    [null, -1, "1x2", {}, undefined]
+    .forEach((val) => it('should throw when setting timeout with duration=' + JSON.stringify(val), async function() {
+      assert.throws(() => {
+        this.clock.setTimeout(() => {}, val)
+      }, 'should throw Error when setTimeout(..., ' + JSON.stringify(val) + ')')
+    }));
+
+    [null, -1, "1x2", {}, undefined]
+    .forEach((val) => it('should throw when setting interval with duration=' + JSON.stringify(val), async function() {
+      assert.throws(() => {
+        this.clock.setInterval(() => {}, val)
+      }, 'should throw Error when setInterval(..., ' + JSON.stringify(val) + ')')
+    }));
+  });
+
   [0.5, 1, 2].forEach((timeScale) => describe(`timeScale: ${timeScale}`, function() {
     beforeEach(function() {
       this.clock.timeScale = timeScale;
