@@ -87,7 +87,7 @@ class ClockWarp {
 
   /**
    * equivalent of `performance.now()`. The value reflects all time
-   * manipulations by `fastForrward` or `timeScale`
+   * manipulations by `fastForward` or `timeScale`
    */
   get now() {
     this._updateElapsed();
@@ -104,10 +104,23 @@ class ClockWarp {
       throw new Error('dt must be a positive Number');
     }
     this._updateElapsed();
-    this._elapsed += dt;
-    while (this._execOverdueEvent()) {
+    const timeAfterFastForward = this._elapsed + dt;
+    let forwardDurationLeft = dt;
+
+    while (this._events.length > 0) {
+      const nextEvent = this._events[this._events.length-1];
+      if (nextEvent.timestamp > timeAfterFastForward) {
+        break;
+      }
+      const timeStep = nextEvent.timestamp - this._elapsed;
+      forwardDurationLeft -= timeStep;
+      this._elapsed += timeStep;
+      if (!this._execOverdueEvent()) {
+        break;
+      }
       this._scheduleNextEvent();
     }
+    this._elapsed += forwardDurationLeft;
   }
 
   /**

@@ -66,7 +66,7 @@ all events are going to be executed twice faster than usual.
 
 ### clockWarp.now
 equivalent of `performance.now()`. The value reflects all time
-manipulations by `fastForrward` or `timeScale`
+manipulations by `fastForward` or `timeScale`
 
 **Kind**: instance property of [<code>ClockWarp</code>](#ClockWarp)  
 <a name="ClockWarp+fastForward"></a>

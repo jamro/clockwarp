@@ -19,7 +19,7 @@ describe('ClockWarp', function() {
     }));
 
     [null, 0, -1, "1x2", {}, undefined]
-    .forEach((val) => it('should throw when fastForward by' + JSON.stringify(val), async function() {
+    .forEach((val) => it('should throw when fastForward by ' + JSON.stringify(val), async function() {
       assert.throws(() => {
         this.clock.fastForward(val)
       }, 'should throw Error when fastForward(' + JSON.stringify(val) + ')')
@@ -267,4 +267,31 @@ describe('ClockWarp', function() {
 
     assert.equal(order, 'ABC');
   });
+  
+  it('should schedule next events from handler when waiting', async function() {
+    let counter = 0;
+    let event = null
+    const callback = () => {
+      counter++
+      event = this.clock.setTimeout(() => callback(), 300)
+    }
+    callback()
+    await new Promise((done) => setTimeout(done, 1000))
+    assert.equal(counter, 4)
+    this.clock.clear(event)
+  });
+
+  it('should schedule next events from handler when fast forward', async function() {
+    let counter = 0;
+    let event = null
+    const callback = () => {
+      counter++
+      event = this.clock.setTimeout(() => callback(), 300)
+    }
+    callback()
+    this.clock.fastForward(1000)
+    assert.equal(counter, 4)
+    this.clock.clear(event)
+  });
+
 });
