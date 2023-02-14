@@ -5,7 +5,8 @@
   "main": "src/ClockWarp.js",
   "type": "module",
   "scripts": {
-    "all": "npm run doc && npm run test",
+    "all": "npm run lint && npm run doc && npm run test",
+    "lint": "eslint src/ClockWarp.js",
     "test": "mocha src",
     "watch": "mocha src --watch --parallel --recursive",
     "doc": "jsdoc2md src/ClockWarp.js -t doc/README.hbs > README.md"
@@ -21,6 +22,8 @@
   },
   "homepage": "https://github.com/jamro/clockwarp#readme",
   "devDependencies": {
+    "eslint": "^8.34.0",
+    "eslint-config-google": "^0.14.0",
     "jsdoc-to-markdown": "^8.0.0",
     "mocha": "^10.2.0",
     "sinon": "^15.0.1"

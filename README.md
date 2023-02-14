@@ -58,19 +58,21 @@ Constructor
 <a name="ClockWarp+timeScale"></a>
 
 ### clockWarp.timeScale
-Time multiplier for the clock. For example, when setting the value to 2, all events are going to be executed twice faster than usual.
+Time multiplier for the clock. For example, when setting the value to 2,
+all events are going to be executed twice faster than usual.
 
 **Kind**: instance property of [<code>ClockWarp</code>](#ClockWarp)  
 <a name="ClockWarp+now"></a>
 
 ### clockWarp.now
-equivalent of `performance.now()`. The value reflects all time manipulations by `fastForrward` or `timeScale`
+equivalent of `performance.now()`. The value reflects all time
+manipulations by `fastForrward` or `timeScale`
 
 **Kind**: instance property of [<code>ClockWarp</code>](#ClockWarp)  
 <a name="ClockWarp+fastForward"></a>
 
 ### clockWarp.fastForward(dt)
-Move time of the clock by specified duration. 
+Move time of the clock by specified duration.
 This operation will execute all events scheduled for that duration
 
 **Kind**: instance method of [<code>ClockWarp</code>](#ClockWarp)  
@@ -109,7 +111,8 @@ repeatedly calls a function, with a fixed time delay between each call.
 <a name="ClockWarp+clear"></a>
 
 ### clockWarp.clear(event)
-cancels an event previously established by calling `setTimeout` or `setInterval`
+cancels an event previously established by
+calling `setTimeout` or `setInterval`
 
 **Kind**: instance method of [<code>ClockWarp</code>](#ClockWarp)  
 
