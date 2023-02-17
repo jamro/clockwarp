@@ -176,4 +176,4 @@ class ClockWarp {
 }
 
 
-export default ClockWarp;
+module.exports = ClockWarp;

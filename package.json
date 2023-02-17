@@ -1,9 +1,8 @@
 {
   "name": "clockwarp",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "JavaScript alternative to setTimeout offering time manipulation features",
   "main": "src/ClockWarp.js",
-  "type": "module",
   "scripts": {
     "all": "npm run lint && npm run doc && npm run test",
     "lint": "eslint src/ClockWarp.js",

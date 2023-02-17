@@ -1,6 +1,6 @@
-import assert from 'assert';
-import ClockWarp from './ClockWarp.js';
-import sinon from 'sinon';
+const assert = require('assert');
+const ClockWarp = require('./ClockWarp.js');
+const sinon = require('sinon');
 
 describe('ClockWarp', function() {
   this.retries(3);
